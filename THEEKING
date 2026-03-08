@@ -4,13 +4,43 @@ print("KINGVJHUB Executed")
 -- Load Rayfield
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
+-- Custom UI Theme (Purple)
+Rayfield:SetTheme({
+    Background = Color3.fromRGB(18,18,25),
+    Topbar = Color3.fromRGB(25,25,35),
+    Shadow = Color3.fromRGB(0,0,0),
+    NotificationBackground = Color3.fromRGB(20,20,30),
+    NotificationActionsBackground = Color3.fromRGB(230,230,230),
+
+    TabBackground = Color3.fromRGB(25,25,35),
+    TabStroke = Color3.fromRGB(40,40,55),
+    TabBackgroundSelected = Color3.fromRGB(120,80,255),
+
+    TabTextColor = Color3.fromRGB(240,240,240),
+    SelectedTabTextColor = Color3.fromRGB(255,255,255),
+
+    ElementBackground = Color3.fromRGB(30,30,45),
+    ElementBackgroundHover = Color3.fromRGB(40,40,60),
+    SecondaryElementBackground = Color3.fromRGB(25,25,35),
+    ElementStroke = Color3.fromRGB(60,60,90),
+
+    SliderBackground = Color3.fromRGB(60,60,120),
+    SliderProgress = Color3.fromRGB(160,120,255),
+
+    ToggleBackground = Color3.fromRGB(40,40,60),
+    ToggleEnabled = Color3.fromRGB(160,120,255),
+    ToggleDisabled = Color3.fromRGB(60,60,80),
+
+    ButtonBackground = Color3.fromRGB(140,90,255),
+    ButtonStroke = Color3.fromRGB(160,120,255)
+})
+
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
 
 -- Remotes
 local DuoEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("DuoPlrEvents")
-local SoloEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("SoloPlrEvents")
 local AdjustBody = ReplicatedStorage:WaitForChild("events"):WaitForChild("AdjustBody")
 local MainKeys = ReplicatedStorage:WaitForChild("events"):WaitForChild("MainKeys")
 
@@ -105,28 +135,6 @@ MainTab:CreateButton({
         AdjustBody:FireServer("LeftLeg", 1)
         AdjustBody:FireServer("RightLeg", 1)
         AdjustBody:FireServer("Torso", 1)
-    end
-})
-
--- =========================
--- AUTO HEAL
--- =========================
-local healing = false
-
-MainTab:CreateToggle({
-    Name = "Auto Heal",
-    CurrentValue = false,
-    Callback = function(Value)
-        healing = Value
-        
-        if healing then
-            task.spawn(function()
-                while healing do
-                    SoloEvent:FireServer("Health")
-                    task.wait(0.2)
-                end
-            end)
-        end
     end
 })
 
