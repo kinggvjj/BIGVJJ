@@ -1,0 +1,172 @@
+-- EXECUTE NOTIFICATION
+print("KINGVJHUB Executed")
+
+-- Load Rayfield
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+
+-- Remotes
+local AdjustBody = ReplicatedStorage:WaitForChild("events"):WaitForChild("AdjustBody")
+local MainKeys = ReplicatedStorage:WaitForChild("events"):WaitForChild("MainKeys")
+
+-- Window
+local Window = Rayfield:CreateWindow({
+    Name = "KINGVJHUB",
+    LoadingTitle = "KINGVJHUB",
+    LoadingSubtitle = "By VJ",
+    ConfigurationSaving = {
+        Enabled = false
+    },
+    KeySystem = true,
+    KeySettings = {
+        Title = "KINGVJ KEY",
+        Subtitle = "Enter The Key",
+        Note = "Premium Access",
+        SaveKey = false,
+        GrabKeyFromSite = false,
+        Key = {"yueriii"}
+    }
+})
+
+Rayfield:Notify({
+    Title = "KINGVJHUB",
+    Content = "Script Loaded Successfully",
+    Duration = 4
+})
+
+local MainTab = Window:CreateTab("Main", 4483362458)
+local ComingTab = Window:CreateTab("Coming Soon", 4483362458)
+
+task.wait(1)
+if Window.KeySystemTab then
+    Window.KeySystemTab:Destroy()
+end
+
+Rayfield:Notify({
+    Title = "Access Granted",
+    Content = "ENJOY !!",
+    Duration = 4
+})
+
+-- =========================
+-- AUTO DRAG
+-- =========================
+local dragging = false
+
+MainTab:CreateToggle({
+    Name = "Auto Drag",
+    CurrentValue = false,
+    Callback = function(Value)
+        dragging = Value
+        
+        if dragging then
+            task.spawn(function()
+                while dragging do
+
+                    local args = {
+                        "Drag"
+                    }
+
+                    game:GetService("ReplicatedStorage")
+                        :WaitForChild("events")
+                        :WaitForChild("MainKeys")
+                        :FireServer(unpack(args))
+
+                    task.wait(0.2)
+                end
+            end)
+        end
+    end
+})
+
+-- =========================
+-- GET TALL
+-- =========================
+MainTab:CreateButton({
+    Name = "Get Tall",
+    Callback = function()
+        AdjustBody:FireServer("Height", 15)
+        AdjustBody:FireServer("Width", 10)
+        AdjustBody:FireServer("Depth", 8)
+        AdjustBody:FireServer("Head", 10)
+        AdjustBody:FireServer("LeftArm", 10)
+        AdjustBody:FireServer("RightArm", 10)
+        AdjustBody:FireServer("LeftLeg", 10)
+        AdjustBody:FireServer("RightLeg", 10)
+        AdjustBody:FireServer("Torso", 15)
+    end
+})
+
+-- =========================
+-- RESET AVATAR
+-- =========================
+MainTab:CreateButton({
+    Name = "Reset Avatar",
+    Callback = function()
+        AdjustBody:FireServer("Height", 1)
+        AdjustBody:FireServer("Width", 1)
+        AdjustBody:FireServer("Depth", 1)
+        AdjustBody:FireServer("Head", 1)
+        AdjustBody:FireServer("LeftArm", 1)
+        AdjustBody:FireServer("RightArm", 1)
+        AdjustBody:FireServer("LeftLeg", 1)
+        AdjustBody:FireServer("RightLeg", 1)
+        AdjustBody:FireServer("Torso", 1)
+    end
+})
+
+-- =========================
+-- AUTO PUSH
+-- =========================
+local pushing = false
+
+MainTab:CreateToggle({
+    Name = "Auto Push",
+    CurrentValue = false,
+    Callback = function(Value)
+        pushing = Value
+        
+        if pushing then
+            task.spawn(function()
+                while pushing do
+                    MainKeys:FireServer("Push")
+                    task.wait(0.2)
+                end
+            end)
+        end
+    end
+})
+
+-- =========================
+-- AUTO STOMP
+-- =========================
+local stomping = false
+
+MainTab:CreateToggle({
+    Name = "Auto Stomp",
+    CurrentValue = false,
+    Callback = function(Value)
+        stomping = Value
+        
+        if stomping then
+            task.spawn(function()
+                while stomping do
+
+                    local args = {
+                        "Stomp"
+                    }
+
+                    game:GetService("ReplicatedStorage")
+                        :WaitForChild("events")
+                        :WaitForChild("MainKeys")
+                        :FireServer(unpack(args))
+
+                    task.wait(0.2)
+                end
+            end)
+        end
+    end
+})
