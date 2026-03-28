@@ -22,7 +22,7 @@ local Window = Rayfield:CreateWindow({
     KeySettings = {
         Title = "KINGVJ KEY",
         Subtitle = "Enter The Key",
-        Key = {"yueriii"}
+        Key = {"yuerii"} -- ✅ FIXED KEY
     }
 })
 
@@ -56,7 +56,7 @@ Rayfield:Notify({
 local dragging = false
 
 MainTab:CreateToggle({
-    Name = "Auto Drag",
+    Name = "Auto Drag 🚶‍♂️", -- ✅ emoji added
     CurrentValue = false,
     Callback = function(v)
 
@@ -80,7 +80,7 @@ MainTab:CreateToggle({
 local pushing = false
 
 MainTab:CreateToggle({
-    Name = "Auto Push",
+    Name = "Auto Push 🫸", -- ✅ emoji added
     CurrentValue = false,
     Callback = function(v)
 
@@ -104,7 +104,7 @@ MainTab:CreateToggle({
 local stomping = false
 
 MainTab:CreateToggle({
-    Name = "Auto Stomp",
+    Name = "Auto Stomp 🦶", -- ✅ emoji added
     CurrentValue = false,
     Callback = function(v)
 
