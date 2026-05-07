@@ -22,7 +22,7 @@ local Window = Rayfield:CreateWindow({
     KeySettings = {
         Title = "KINGVJ KEY",
         Subtitle = "Enter The Key",
-        Key = {"bigvj"} -- ✅ FIXED KEY
+        Key = {"graveyard"} -- ✅ FIXED KEY
     }
 })
 
